@@ -66,14 +66,12 @@
 );
 
 
-
-print "Dwse thn akolouthia noukleotidiwn:\n";
+print "Give the DNA sequence:\n";
 $seq=<STDIN>;
 chomp $seq;
 print "\n";
 
-#vriskw ta aminoksea
-
+#find amino acid sequence
 for($i=1;$i<=length($seq)+1;$i++)
 {
     $x=substr($seq,$i,3);
@@ -86,8 +84,8 @@ for($i=1;$i<=length($seq)+1;$i++)
             if($k eq '-')
             {
                 print "\n";
-                print "H thesh tou noukleotidiou enarkshs einai:$i\n";
-                print "H thesh tou noukleotidiou lhkshs einai:$j\n";
+                print "Position of the first nucleotide of the Methionine codon:$i\n";
+                print "Position of the first nucleotide of a termination codon:$j\n";
                 print "\n";
                 last;
             }
@@ -97,9 +95,8 @@ for($i=1;$i<=length($seq)+1;$i++)
     }
     
     
-    #vriskw th sumplhrwmatikh alusida DNA
-    
-        $m=substr($seq,$i,1);
+    #find complementary DNA strand    
+    $m=substr($seq,$i,1);
     if($m eq "A")
     {
         $p="T";
@@ -121,7 +118,7 @@ for($i=1;$i<=length($seq)+1;$i++)
         @table1=(@table1,$p);
     }
 }
-print "Oi dyo alusides DNA einai oi ekshs:\n";
+print "DNA strands:\n";
 print $seq;
 print "\n";
 $last=pop(@table1);
